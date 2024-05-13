@@ -16,7 +16,19 @@ let clearButton = document.createElement('button');
 let firstInput;
 let secondInput;
 let operatorButton = false;
+let isReadyForOperation = false;
+let isEqualsClicked = false;
+let result = 0;
+
 //All Buttons
+function clearState(){
+    values.textContent = '';
+    firstInput = 0; 
+    secondInput = 0;
+    operatorButton = false;
+    result = 0;
+    currentNumber = '';
+}
 function generateNumbers(){
     //Row 0
         number0 = document.createElement('button');
@@ -28,18 +40,21 @@ function generateNumbers(){
         equals.classList.add('numbers','equals');
         equals.textContent = '=';
         row0.appendChild(equals);
-
+        
+        equals.addEventListener('click', ()=>{
+            isEqualsClicked = true;
+            operator(firstInput,operation,secondInput);
+            values.textContent = result;
+            firstInput = 0; 
+            secondInput = 0;
+            operatorButton = false;
+        })
         clear = document.createElement('button');
         clear.classList.add('numbers','clear');
         clear.textContent = 'C/A';
         row0.appendChild(clear);
 
-        clear.addEventListener('click', () =>{
-            values.textContent = '';
-            firstInput = 0; 
-            secondInput = 0;
-            operatorButton = 0;
-        });
+        clear.addEventListener('click', clearState());
         //Row 1
     for (let i = 1; i<=3; i++){
         numRow1 = document.createElement('button');
@@ -50,6 +65,9 @@ function generateNumbers(){
         minus = document.createElement('button');
         minus.classList.add('numbers','minus');
         minus.textContent = '-';
+        minus.addEventListener('click', ()=>{
+            operation = subtract();
+        })
         row1.appendChild(minus);
     //Row 2
     for (let i = 4; i<=6; i++){
@@ -61,6 +79,9 @@ function generateNumbers(){
         multiplyButton = document.createElement('button');
         multiplyButton.classList.add('numbers', 'multiply');
         multiplyButton.textContent = 'X';
+        multiplyButton.addEventListener('click', ()=>{
+            operation = multiply();
+        })
         row2.appendChild(multiplyButton);
     //Row 3
     for (let i = 7; i<=9; i++){
@@ -72,6 +93,9 @@ function generateNumbers(){
         division = document.createElement('button');
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
+        division.addEventListener('click', ()=>{
+            operation = divide();
+        })
         row3.appendChild(division);
 
         let allOperators = [addButton,minus,multiplyButton,division];
@@ -88,37 +112,45 @@ function generateNumbers(){
             currentNumberDOM.addEventListener('click', (function(index) {
                 return function() {
                     values.textContent = index;
-                    firstInput = index;
-                }; 
+                    currentNumber = 'num' + i;
+                    
+        }; 
             })(i)); //That's so cool that you can do that...
-        };//It needs to work inside the function though.
-          //Maybe I'll add a query selector inside this loop to get each number? Will that work?
-          //Apparently it's called dynamic variable manipulation. That *window* thing is pretty cool.
-        
+        };  
+        clearState();
+
 }
 
 generateNumbers();
 //Addition
 function add(n1,n2){
-    return n1 + n2;
+    result = n1 + n2;
 }
 //Subtraction
 function subtract(n1,n2){
-    return n1 - n2;
+    result =  n1 - n2;
 }
 //Multiply
 function multiply(n1,n2){
-    return n1 * n2;
+    result = n1 * n2;
 }
 //Division
 function divide(n1,n2){
     if (n2 === 0){
-        return 'ERROR: Division by 0 is not allowed by math gods'; //Remember to reduce text size to fill display!
+        values.textContent = 'ERROR: Division by 0 is not allowed by math gods'; //Remember to reduce text size to fill display!
     } else {
-        return n1 / n2;
+        result =  n1 / n2;
     }
 }
 //Operation 
-function operator(n1,op,n2){
-    return op(n1,n2);
+function operator(n1,oper,n2){
+    if (oper = add()){
+       add(n1,n2);
+    } else if (oper = subtract()){
+       subtract(n1,n2);
+    } else if (oper = multiply) {
+       multiply(n1,n2);
+    } else{
+       divide(n1,n2);
+    }
 };
