@@ -1,4 +1,4 @@
-//Dom
+//DOM
 let display = document.querySelector('.display');
 let buttons = document.querySelector('.calc-buttons');
 let row0 = document.querySelector('.row0')
@@ -12,17 +12,13 @@ let divideButton = document.createElement('button');
 let multiplyButton = document.createElement('button');
 let equalsButton = document.createElement('button');
 let clearButton = document.createElement('button');
-
-// let allOperators = [addButton,subtractButton,divideButton,multiplyButton,equalsButton,clearButton];
-// allOperators.forEach(button =>{
-//     button.classList.add(".calc-buttons");
-//     buttons.appendChild(button);
-// }); Add after number button
+//Individual Button Selectors
+let num0 = document.querySelector('.num0');
 
 //All Buttons
 function generateNumbers(){
     //Row 0
-    let number0 = document.createElement('button');
+        number0 = document.createElement('button');
         number0.classList.add('numbers','num0');
         number0.textContent = 0;
         row0.appendChild(number0);
@@ -31,12 +27,12 @@ function generateNumbers(){
             values.textContent = '0'
         })
 
-    let equals = document.createElement('button');
+        equals = document.createElement('button');
         equals.classList.add('numbers','equals');
         equals.textContent = '=';
         row0.appendChild(equals);
 
-    let clear = document.createElement('button');
+        clear = document.createElement('button');
         clear.classList.add('numbers','clear');
         clear.textContent = 'C/A';
         row0.appendChild(clear);
@@ -46,7 +42,10 @@ function generateNumbers(){
         })
         //Row 1
     for (let i = 1; i<=3; i++){
-        let numRow1 = document.createElement('button');
+        let currentNumber = 'num' + i;
+        let currentNumberDOM = document.querySelector('.num' + i);
+        window[currentNumber] = currentNumberDOM;
+        numRow1 = document.createElement('button');
         numRow1.classList.add('numbers', 'num' + i);
         numRow1.textContent = i;
         row1.appendChild(numRow1);
@@ -57,13 +56,16 @@ function generateNumbers(){
             }; 
         })(i)); //That's so cool that you can do that.
     }
-    let minus = document.createElement('button');
+        minus = document.createElement('button');
         minus.classList.add('numbers','minus');
         minus.textContent = '-';
         row1.appendChild(minus);
     //Row 2
     for (let i = 4; i<=6; i++){
-        let numRow2 = document.createElement('button');
+        let currentNumber = 'num' + i;
+        let currentNumberDOM = document.querySelector('.num' + i);
+        window[currentNumber] = currentNumberDOM;
+        numRow2 = document.createElement('button');
         numRow2.classList.add('numbers', 'num' + i);
         numRow2.textContent = i;
         row2.appendChild(numRow2);
@@ -74,13 +76,16 @@ function generateNumbers(){
             }; 
         })(i));
     }
-    let multiply = document.createElement('button');
-        multiply.classList.add('numbers', 'multiply');
-        multiply.textContent = 'X';
-        row2.appendChild(multiply);
+        multiplyButton = document.createElement('button');
+        multiplyButton.classList.add('numbers', 'multiply');
+        multiplyButton.textContent = 'X';
+        row2.appendChild(multiplyButton);
     //Row 3
     for (let i = 7; i<=9; i++){
-        let numRow3 = document.createElement('button');
+        let currentNumber = 'num' + i;
+        let currentNumberDOM = document.querySelector('.num' + i);
+        window[currentNumber] = currentNumberDOM;
+        numRow3 = document.createElement('button');
         numRow3.classList.add('numbers', 'num' + i);
         numRow3.textContent = i;
         row3.appendChild(numRow3);
@@ -91,7 +96,7 @@ function generateNumbers(){
             }; 
         })(i));
     }
-    let division = document.createElement('button');
+        division = document.createElement('button');
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
         row3.appendChild(division);
@@ -121,4 +126,4 @@ function divide(n1,n2){
 //Operation 
 function operator(n1,op,n2){
     return op(n1,n2);
-}
+};
