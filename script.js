@@ -12,7 +12,10 @@ let divideButton = document.createElement('button');
 let multiplyButton = document.createElement('button');
 let equalsButton = document.createElement('button');
 let clearButton = document.createElement('button');
-//Individual Button Selectors
+//Variable Decloration
+let firstInput;
+let secondInput;
+let operatorButton = false;
 //All Buttons
 function generateNumbers(){
     //Row 0
@@ -20,10 +23,6 @@ function generateNumbers(){
         number0.classList.add('numbers','num0');
         number0.textContent = 0;
         row0.appendChild(number0);
-
-        number0.addEventListener('click', () =>{
-            values.textContent = '0'
-        })
 
         equals = document.createElement('button');
         equals.classList.add('numbers','equals');
@@ -36,8 +35,11 @@ function generateNumbers(){
         row0.appendChild(clear);
 
         clear.addEventListener('click', () =>{
-            values.textContent = ''
-        })
+            values.textContent = '';
+            firstInput = 0; 
+            secondInput = 0;
+            operatorButton = 0;
+        });
         //Row 1
     for (let i = 1; i<=3; i++){
         numRow1 = document.createElement('button');
@@ -72,21 +74,27 @@ function generateNumbers(){
         division.textContent = '÷';
         row3.appendChild(division);
 
-        for (let i = 0; i<9; i++){
+        let allOperators = [addButton,minus,multiplyButton,division];
+        allOperators.forEach(op => {
+            op.addEventListener('click', ()=>{
+                operatorButton = true;
+            })
+        })
+
+        for (let i = 0; i<=9; i++){
             currentNumber = 'num' + i;
             currentNumberDOM = document.querySelector('.num' + i);
             window[currentNumber] = currentNumberDOM;
             currentNumberDOM.addEventListener('click', (function(index) {
                 return function() {
                     values.textContent = index;
+                    firstInput = index;
                 }; 
-            })(i)); //That's so cool taht you can do that...
+            })(i)); //That's so cool that you can do that...
         };//It needs to work inside the function though.
           //Maybe I'll add a query selector inside this loop to get each number? Will that work?
           //Apparently it's called dynamic variable manipulation. That *window* thing is pretty cool.
-        let firstInput;
-        let secondInput;
-        let operator;
+        
 }
 
 generateNumbers();
