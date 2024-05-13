@@ -26,14 +26,24 @@ function generateNumbers(){
         number0.classList.add('numbers','num0');
         number0.textContent = 0;
         row0.appendChild(number0);
+
+        number0.addEventListener('click', () =>{
+            values.textContent = '0'
+        })
+
     let equals = document.createElement('button');
         equals.classList.add('numbers','equals');
         equals.textContent = '=';
         row0.appendChild(equals);
+
     let clear = document.createElement('button');
         clear.classList.add('numbers','clear');
         clear.textContent = 'C/A';
         row0.appendChild(clear);
+
+        clear.addEventListener('click', () =>{
+            values.textContent = ''
+        })
         //Row 1
     for (let i = 1; i<=3; i++){
         let numRow1 = document.createElement('button');
@@ -85,11 +95,6 @@ function generateNumbers(){
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
         row3.appendChild(division);
-
-    //Inputs
-    number0.addEventListener('click', () =>{
-        values.textContent = '0'
-    })
 }
 
 generateNumbers();
