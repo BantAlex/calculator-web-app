@@ -14,7 +14,16 @@ let clearButton = document.createElement('button');
 //     buttons.appendChild(button);
 // }); Add after number button
 
-
+//Numbered Buttons
+function generateNumbers(){
+    for (i=0; i<10; i++){
+        let number = document.createElement('button');
+        number.classList.add('numbers','num' + i);
+        buttons.appendChild(number);
+        number.textContent = i;
+    }
+}
+generateNumbers();
 //Addition
 function add(n1,n2){
     return n1 + n2;

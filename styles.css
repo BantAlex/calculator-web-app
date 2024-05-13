@@ -1,21 +1,21 @@
 @import url('https://fonts.cdnfonts.com/css/calculator');
 
-:root{
+/* :root{
     --text : #e9f5f6;
     --background: #0b1619;
     --main: #97ced3;
     --secondary: #322f6f;
     --highlight: #7e57b8;
-}
+} */
 
 /* -Alt Theme- */
-/* :root{
+:root{
     --text : #ede4fd;
     --background: #040109;
     --main: #aa88f4;
     --secondary: #930d30;
     --highlight: #ed5e3a;
-} */
+}
 
 body{
     background-color: var(--background);
@@ -85,6 +85,7 @@ h1{
 }
 /* Operator buttons */
 .calc-buttons{
+    font-family: 'Calculator', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,8 +94,11 @@ h1{
     width: 550px;
 }
 
+/* Numbered buttons */
+.numbers{
+    font-family: 'Calculator', sans-serif;
 
-
+}
 footer{
     width: 100%;
     padding: 20px;
