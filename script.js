@@ -13,8 +13,6 @@ let multiplyButton = document.createElement('button');
 let equalsButton = document.createElement('button');
 let clearButton = document.createElement('button');
 //Individual Button Selectors
-let num0 = document.querySelector('.num0');
-
 //All Buttons
 function generateNumbers(){
     //Row 0
@@ -42,9 +40,6 @@ function generateNumbers(){
         })
         //Row 1
     for (let i = 1; i<=3; i++){
-        let currentNumber = 'num' + i;
-        let currentNumberDOM = document.querySelector('.num' + i);
-        window[currentNumber] = currentNumberDOM;
         numRow1 = document.createElement('button');
         numRow1.classList.add('numbers', 'num' + i);
         numRow1.textContent = i;
@@ -62,9 +57,6 @@ function generateNumbers(){
         row1.appendChild(minus);
     //Row 2
     for (let i = 4; i<=6; i++){
-        let currentNumber = 'num' + i;
-        let currentNumberDOM = document.querySelector('.num' + i);
-        window[currentNumber] = currentNumberDOM;
         numRow2 = document.createElement('button');
         numRow2.classList.add('numbers', 'num' + i);
         numRow2.textContent = i;
@@ -82,9 +74,6 @@ function generateNumbers(){
         row2.appendChild(multiplyButton);
     //Row 3
     for (let i = 7; i<=9; i++){
-        let currentNumber = 'num' + i;
-        let currentNumberDOM = document.querySelector('.num' + i);
-        window[currentNumber] = currentNumberDOM;
         numRow3 = document.createElement('button');
         numRow3.classList.add('numbers', 'num' + i);
         numRow3.textContent = i;
@@ -100,7 +89,15 @@ function generateNumbers(){
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
         row3.appendChild(division);
+
+        for (let i = 0; i<9; i++){
+            let currentNumber = 'num' + i;
+            let currentNumberDOM = document.querySelector('.num' + i);
+            window[currentNumber] = currentNumberDOM;
+        }
 }
+
+num0 = 0;
 
 generateNumbers();
 //Addition
