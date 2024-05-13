@@ -8,6 +8,15 @@
     --highlight: #7e57b8;
 }
 
+/* -Alt Theme- */
+/* :root{
+    --text : #ede4fd;
+    --background: #040109;
+    --main: #aa88f4;
+    --secondary: #930d30;
+    --highlight: #ed5e3a;
+} */
+
 body{
     background-color: var(--background);
     color: var(--text);
@@ -56,7 +65,7 @@ h1{
 }
 
 .display{
-    background-color: var(--background);
+    background-color: rgba(0, 0, 0, 0.823);
     height: 90px;
     width: 550px;
     display: flex;
@@ -72,15 +81,19 @@ h1{
     font-weight: 600;
     font-size: 64px;
     margin-right: 20px;
+    color: var(--text)
 }
-
+/* Operator buttons */
 .calc-buttons{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     height: 425px;
     width: 550px;
 }
+
+
 
 footer{
     width: 100%;
