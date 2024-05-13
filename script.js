@@ -5,6 +5,7 @@ let row0 = document.querySelector('.row0')
 let row1 = document.querySelector('.row1')
 let row2 = document.querySelector('.row2')
 let row3 = document.querySelector('.row3')
+let values = document.querySelector('.values');
 let addButton = document.createElement('button');
 let subtractButton = document.createElement('button');
 let divideButton = document.createElement('button');
@@ -39,6 +40,12 @@ function generateNumbers(){
         numRow1.classList.add('numbers', 'num' + i);
         numRow1.textContent = i;
         row1.appendChild(numRow1);
+
+        numRow1.addEventListener('click', (function(index) {
+            return function() {
+                values.textContent = index;
+            }; 
+        })(i)); //That's so cool that you can do that.
     }
     let minus = document.createElement('button');
         minus.classList.add('numbers','minus');
@@ -50,6 +57,12 @@ function generateNumbers(){
         numRow2.classList.add('numbers', 'num' + i);
         numRow2.textContent = i;
         row2.appendChild(numRow2);
+
+        numRow2.addEventListener('click', (function(index) {
+            return function() {
+                values.textContent = index;
+            }; 
+        })(i));
     }
     let multiply = document.createElement('button');
         multiply.classList.add('numbers', 'multiply');
@@ -61,11 +74,22 @@ function generateNumbers(){
         numRow3.classList.add('numbers', 'num' + i);
         numRow3.textContent = i;
         row3.appendChild(numRow3);
+
+        numRow3.addEventListener('click', (function(index) {
+            return function() {
+                values.textContent = index;
+            }; 
+        })(i));
     }
     let division = document.createElement('button');
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
         row3.appendChild(division);
+
+    //Inputs
+    number0.addEventListener('click', () =>{
+        values.textContent = '0'
+    })
 }
 
 generateNumbers();
