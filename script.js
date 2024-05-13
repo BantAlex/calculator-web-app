@@ -91,13 +91,11 @@ function generateNumbers(){
         row3.appendChild(division);
 
         for (let i = 0; i<9; i++){
-            let currentNumber = 'num' + i;
-            let currentNumberDOM = document.querySelector('.num' + i);
+            currentNumber = 'num' + i;
+            currentNumberDOM = document.querySelector('.num' + i);
             window[currentNumber] = currentNumberDOM;
-        }
+        };
 }
-
-num0 = 0;
 
 generateNumbers();
 //Addition
