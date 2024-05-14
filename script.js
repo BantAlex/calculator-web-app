@@ -10,8 +10,6 @@ let values = document.querySelector('.values');
 let firstInput;
 let secondInput;
 let operatorButton = false;
-let isReadyForOperation = false;
-let isEqualsClicked = false;
 let result = 0;
 
 //All Buttons
@@ -45,7 +43,6 @@ function generateNumbers(){
         });
         
         equals.addEventListener('click', ()=>{
-            isEqualsClicked = true;
             operator(firstInput,operation,secondInput);
             values.textContent = result;
             firstInput = 0; 
