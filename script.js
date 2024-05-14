@@ -6,108 +6,73 @@ let row1 = document.querySelector('.row1')
 let row2 = document.querySelector('.row2')
 let row3 = document.querySelector('.row3')
 let values = document.querySelector('.values');
+//Dynamic digit selector
+for (let i = 0; i<=9; i++){
+    window['num' + i] = document.querySelector('.num' + i)
+};
+//Operation selector
+let plus = document.querySelector('.plus');
+let minus =document.querySelector('.minus');
+let multiplyButton = document.querySelector('.multiplyButton');
+let division = document.querySelector('.division');
+
+let allOperators = [plus,minus,multiplyButton,division];
+
+let equals = document.querySelector('.equals');
+let clear = document.querySelector('.clear');
 //Variable Decloration
 let firstInput;
 let secondInput;
 let operatorButton = false;
 let result = 0;
-
 //All Buttons
 function clearState(){
     values.textContent = '';
+    values.style.fontSize = "64px";
     firstInput = 0; 
     secondInput = 0;
     operatorButton = false;
     result = 0;
-    currentNumber = '';
 }
 function generateNumbers(){
     //Row 0
-        number0 = document.createElement('button');
-        number0.classList.add('numbers','num0');
-        number0.textContent = 0;
-        row0.appendChild(number0);
-
-        equals = document.createElement('button');
-        equals.classList.add('numbers','equals');
-        equals.textContent = '=';
-        row0.appendChild(equals);
-
-        plus = document.createElement('button');
-        plus.classList.add('numbers','plus');
-        plus.textContent = '+';
-        row0.appendChild(plus);
-
         plus.addEventListener('click', ()=>{
             operation = add;
         });
-        
         equals.addEventListener('click', ()=>{
             operator(firstInput,operation,secondInput);
-            values.textContent = result;
+            if (operation === divide && secondInput === 0){
+                values.textContent = 'ERROR: Division by 0 is not allowed by math gods'; 
+                values.style.fontSize = "32px";
+                setTimeout(function(){clearState();}, 5000); //it clears the state even if user inputs faster than 5k
+            } else {
+                values.textContent = result;
+            }
             firstInput = 0; 
             secondInput = 0;
             operatorButton = false;
         })
-        clear = document.createElement('button');
-        clear.classList.add('numbers','clear');
-        clear.textContent = 'C/A';
-        row0.appendChild(clear);
-
         clear.addEventListener('click', ()=>{
             clearState();
             values.textContent = '';
         });
         //Row 1
-    for (let i = 1; i<=3; i++){
-        numRow1 = document.createElement('button');
-        numRow1.classList.add('numbers', 'num' + i);
-        numRow1.textContent = i;
-        row1.appendChild(numRow1);
-    }
-        minus = document.createElement('button');
-        minus.classList.add('numbers','minus');
-        minus.textContent = '-';
         minus.addEventListener('click', ()=>{
             operation = subtract;
         })
-        row1.appendChild(minus);
     //Row 2
-    for (let i = 4; i<=6; i++){
-        numRow2 = document.createElement('button');
-        numRow2.classList.add('numbers', 'num' + i);
-        numRow2.textContent = i;
-        row2.appendChild(numRow2);
-    }
-        multiplyButton = document.createElement('button');
-        multiplyButton.classList.add('numbers', 'multiply');
-        multiplyButton.textContent = 'X';
         multiplyButton.addEventListener('click', ()=>{
             operation = multiply;
         })
-        row2.appendChild(multiplyButton);
     //Row 3
-    for (let i = 7; i<=9; i++){
-        numRow3 = document.createElement('button');
-        numRow3.classList.add('numbers', 'num' + i);
-        numRow3.textContent = i;
-        row3.appendChild(numRow3);
-    }
-        division = document.createElement('button');
-        division.classList.add('numbers', 'division');
-        division.textContent = '÷';
         division.addEventListener('click', ()=>{
             operation = divide;
         })
-        row3.appendChild(division);
-
-        let allOperators = [plus,minus,multiplyButton,division];
         allOperators.forEach(op => {
             op.addEventListener('click', ()=>{
                 operatorButton = true;
             })
         })
-
         for (let i = 0; i<=9; i++){
             currentNumber = 'num' + i;
             currentNumberDOM = document.querySelector('.num' + i);
@@ -125,9 +90,8 @@ function generateNumbers(){
             })(i)); //That's so cool that you can do that...
         };  
 }
-generateNumbers(); //All opers are add ffs
+generateNumbers();
 clearState();
-
 //Addition
 function add(n1,n2){
     result = n1 + n2;
@@ -142,11 +106,7 @@ function multiply(n1,n2){
 }
 //Division
 function divide(n1,n2){
-    if (n2 === 0){
-        values.textContent = 'ERROR: Division by 0 is not allowed by math gods'; //Remember to reduce text size to fill display!
-    } else {
-        result =  n1 / n2;
-    }
+    result =  n1 / n2;
 }
 //Operation 
 function operator(n1,oper,n2){
