@@ -112,8 +112,7 @@ function generateNumbers(){
             currentNumberDOM.addEventListener('click', (function(index) {
                 return function() {
                     values.textContent = index;
-                    currentNumber = 'num' + i;
-                    
+                    firstInput= index;    
         }; 
             })(i)); //That's so cool that you can do that...
         };  
