@@ -6,12 +6,6 @@ let row1 = document.querySelector('.row1')
 let row2 = document.querySelector('.row2')
 let row3 = document.querySelector('.row3')
 let values = document.querySelector('.values');
-let addButton = document.createElement('button');
-let subtractButton = document.createElement('button');
-let divideButton = document.createElement('button');
-let multiplyButton = document.createElement('button');
-let equalsButton = document.createElement('button');
-let clearButton = document.createElement('button');
 //Variable Decloration
 let firstInput;
 let secondInput;
@@ -40,6 +34,15 @@ function generateNumbers(){
         equals.classList.add('numbers','equals');
         equals.textContent = '=';
         row0.appendChild(equals);
+
+        plus = document.createElement('button');
+        plus.classList.add('numbers','plus');
+        plus.textContent = '+';
+        row0.appendChild(plus);
+
+        plus.addEventListener('click', ()=>{
+            operation = add;
+        });
         
         equals.addEventListener('click', ()=>{
             isEqualsClicked = true;
@@ -101,7 +104,7 @@ function generateNumbers(){
         })
         row3.appendChild(division);
 
-        let allOperators = [addButton,minus,multiplyButton,division];
+        let allOperators = [plus,minus,multiplyButton,division];
         allOperators.forEach(op => {
             op.addEventListener('click', ()=>{
                 operatorButton = true;
@@ -156,7 +159,7 @@ function operator(n1,oper,n2){
        subtract(n1,n2);
     } else if (oper === multiply) {
        multiply(n1,n2);
-    } else{
+    } else {
        divide(n1,n2);
     }
 };
