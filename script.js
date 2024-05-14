@@ -111,16 +111,22 @@ function generateNumbers(){
             window[currentNumber] = currentNumberDOM;
             currentNumberDOM.addEventListener('click', (function(index) {
                 return function() {
-                    values.textContent = index;
-                    firstInput= index;    
+                    if (operatorButton){
+                        secondInput = index;
+                        values.textContent = index;
+                        operatorButton = false;
+                    } else {
+                        firstInput = index;    
+                        values.textContent = index;
+                    }
+                    
         }; 
             })(i)); //That's so cool that you can do that...
         };  
-        clearState();
-
 }
+generateNumbers(); //All opers are multiply ffs
+clearState();
 
-generateNumbers();
 //Addition
 function add(n1,n2){
     result = n1 + n2;
@@ -143,9 +149,9 @@ function divide(n1,n2){
 }
 //Operation 
 function operator(n1,oper,n2){
-    if (oper = add()){
+    if (oper = add){
        add(n1,n2);
-    } else if (oper = subtract()){
+    } else if (oper = subtract){
        subtract(n1,n2);
     } else if (oper = multiply) {
        multiply(n1,n2);
