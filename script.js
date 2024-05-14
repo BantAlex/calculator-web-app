@@ -12,17 +12,18 @@ let allOperators = [plus,minus,multiplyButton,division];
 let equals = document.querySelector('.equals');
 let clear = document.querySelector('.clear');
 //Dynamic digit selector and listener
+let displayedNum = values.textContent;
 for (let i = 0; i<=9; i++){
     currentNum = window['num' + i];
     currentNum = document.querySelector('.num' + i)
     currentNum.addEventListener('click',(index)=>{
         index = i;
-        currentNum = index;
-        values.textContent = index;
+        values.textContent += index;
+        selected = values.textContent;
         if (isOperatorPressed){
-            secondInput = currentNum;
+            secondInput = selected;
         } else {
-            firstInput = currentNum;
+            firstInput = selected;
         }
     })
 };
@@ -77,6 +78,7 @@ function generateNumbers(){
     allOperators.forEach(op => {
         op.addEventListener('click', ()=>{
             isOperatorPressed = true;
+            values.textContent = 0;
         })
     })
 }
