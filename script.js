@@ -54,7 +54,10 @@ function generateNumbers(){
         clear.textContent = 'C/A';
         row0.appendChild(clear);
 
-        clear.addEventListener('click', clearState());
+        clear.addEventListener('click', ()=>{
+            clearState();
+            values.textContent = '';
+        });
         //Row 1
     for (let i = 1; i<=3; i++){
         numRow1 = document.createElement('button');
