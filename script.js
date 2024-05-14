@@ -66,7 +66,7 @@ function generateNumbers(){
         minus.classList.add('numbers','minus');
         minus.textContent = '-';
         minus.addEventListener('click', ()=>{
-            operation = subtract();
+            operation = subtract;
         })
         row1.appendChild(minus);
     //Row 2
@@ -80,7 +80,7 @@ function generateNumbers(){
         multiplyButton.classList.add('numbers', 'multiply');
         multiplyButton.textContent = 'X';
         multiplyButton.addEventListener('click', ()=>{
-            operation = multiply();
+            operation = multiply;
         })
         row2.appendChild(multiplyButton);
     //Row 3
@@ -94,7 +94,7 @@ function generateNumbers(){
         division.classList.add('numbers', 'division');
         division.textContent = '÷';
         division.addEventListener('click', ()=>{
-            operation = divide();
+            operation = divide;
         })
         row3.appendChild(division);
 
@@ -114,17 +114,15 @@ function generateNumbers(){
                     if (operatorButton){
                         secondInput = index;
                         values.textContent = index;
-                        operatorButton = false;
                     } else {
                         firstInput = index;    
                         values.textContent = index;
                     }
-                    
         }; 
             })(i)); //That's so cool that you can do that...
         };  
 }
-generateNumbers(); //All opers are multiply ffs
+generateNumbers(); //All opers are add ffs
 clearState();
 
 //Addition
@@ -149,11 +147,11 @@ function divide(n1,n2){
 }
 //Operation 
 function operator(n1,oper,n2){
-    if (oper = add){
+    if (oper === add){
        add(n1,n2);
-    } else if (oper = subtract){
+    } else if (oper === subtract){
        subtract(n1,n2);
-    } else if (oper = multiply) {
+    } else if (oper === multiply) {
        multiply(n1,n2);
     } else{
        divide(n1,n2);
