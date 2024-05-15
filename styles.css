@@ -103,6 +103,7 @@ h1{
     font-size: 64px;
     color: var(--text);
     background-color: #7a7995;
+    border-radius: 16px;
 }
 
 .clear{

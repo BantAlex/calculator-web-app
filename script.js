@@ -1,3 +1,10 @@
+//!!!: Make multiple back-to-back calculations without the = button needing to be pressed.
+//TODO: Make it so, pressing an operator displayes the symbol in the screen instead of '0'.
+//TODO: Make the previous values/inputs appear on screen(maybe above the current input?).
+//TODO: Add decimal point.
+//TODO: Make it look presentable.
+//TODO: Make the result smaller if it overflows the display(18 chars long currently).
+//TODO: toFix=> If NaN is on screen, if numbers are pressed, they are added in, with the NaN.
 //DOM
 let display = document.querySelector('.display');
 let values = document.querySelector('.values');
@@ -6,9 +13,8 @@ let plus = document.querySelector('.plus');
 let minus =document.querySelector('.minus');
 let multiplyButton = document.querySelector('.multiplyButton');
 let division = document.querySelector('.division');
-
 let allOperators = [plus,minus,multiplyButton,division];
-
+//Equal/Clear Selectors
 let equals = document.querySelector('.equals');
 let clear = document.querySelector('.clear');
 //Dynamic digit selector and listener
@@ -56,8 +62,7 @@ function generateNumbers(){
             setTimeout(function(){clearState();}, 4000); //it clears the state even if user inputs faster than 5k
         } else {
             values.textContent = result;
-            firstInput = result;
-           
+            firstInput = result; 
         }
         isOperatorPressed = false; 
         if (toString(result.length) > 18){
