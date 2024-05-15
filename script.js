@@ -30,7 +30,7 @@ for (let i = 0; i<=9; i++){
 };
 //Variable Decloration
 let firstInput;
-let secondInput;
+let secondInput = null;
 let isOperatorPressed = false;
 let result = 0;
 let operation = '';
@@ -39,7 +39,7 @@ function clearState(){
     values.textContent = '';
     values.style.fontSize = "64px";
     firstInput = 0; 
-    secondInput = 0;
+    secondInput = null;
     isOperatorPressed = false;
     result = 0;
 }
@@ -53,12 +53,16 @@ function generateNumbers(){
         if (result === Infinity){
             values.textContent = 'Division by 0 is not allowed by math gods'; 
             values.style.fontSize = "32px";
-            setTimeout(function(){clearState();}, 5000); //it clears the state even if user inputs faster than 5k
+            setTimeout(function(){clearState();}, 4000); //it clears the state even if user inputs faster than 5k
         } else {
             values.textContent = result;
             firstInput = result;
+           
         }
-        isOperatorPressed = false;
+        isOperatorPressed = false; 
+        if (toString(result.length) > 18){
+            result = 'Chill, too much!'
+        }
     })
     clear.addEventListener('click', ()=>{
         clearState();
