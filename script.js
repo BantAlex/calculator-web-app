@@ -56,9 +56,8 @@ function generateNumbers(){
             setTimeout(function(){clearState();}, 5000); //it clears the state even if user inputs faster than 5k
         } else {
             values.textContent = result;
+            firstInput = result;
         }
-        firstInput = 0; 
-        secondInput = 0;
         isOperatorPressed = false;
     })
     clear.addEventListener('click', ()=>{
