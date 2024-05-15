@@ -18,9 +18,10 @@ for (let i = 0; i<=9; i++){
     currentNum = document.querySelector('.num' + i)
     currentNum.addEventListener('click',(index)=>{
         index = i;
-        values.textContent += index;
-        selected = values.textContent;
+        values.textContent += index; //make it the other way around.
+        selected = values.textContent; //put values.textContent = variable and then use the variable to add and subract from display
         if (isOperatorPressed){
+            values.textContent = values.textContent - '0';
             secondInput = selected;
         } else {
             firstInput = selected;
@@ -32,6 +33,7 @@ let firstInput;
 let secondInput;
 let isOperatorPressed = false;
 let result = 0;
+let operation = '';
 //All Buttons
 function clearState(){
     values.textContent = '';
@@ -47,7 +49,7 @@ function generateNumbers(){
         operation = add;
     });
     equals.addEventListener('click', ()=>{
-        operator(firstInput,operation,secondInput);
+        operator(parseInt(firstInput),operation,parseInt(secondInput));
         if (operation === divide && secondInput === 0){
             values.textContent = 'ERROR: Division by 0 is not allowed by math gods'; 
             values.style.fontSize = "32px";
