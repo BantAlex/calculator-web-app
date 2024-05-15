@@ -50,8 +50,8 @@ function generateNumbers(){
     });
     equals.addEventListener('click', ()=>{
         operator(parseInt(firstInput),operation,parseInt(secondInput));
-        if (operation === divide && secondInput === 0){
-            values.textContent = 'ERROR: Division by 0 is not allowed by math gods'; 
+        if (result === Infinity){
+            values.textContent = 'Division by 0 is not allowed by math gods'; 
             values.style.fontSize = "32px";
             setTimeout(function(){clearState();}, 5000); //it clears the state even if user inputs faster than 5k
         } else {
